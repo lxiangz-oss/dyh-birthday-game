@@ -27,6 +27,74 @@ body {
   padding: 16px;
 }
 
+.auth-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: radial-gradient(circle at 50% 10%, rgba(36, 66, 120, 0.92), rgba(7, 12, 24, 0.97));
+}
+
+.auth-gate.visible {
+  display: flex;
+}
+
+.auth-card {
+  width: min(420px, 100%);
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(8, 15, 31, 0.9);
+}
+
+.auth-card h2 {
+  margin: 0 0 8px;
+}
+
+.auth-card p {
+  margin: 0 0 10px;
+  opacity: 0.9;
+}
+
+.auth-card label {
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: 700;
+}
+
+.auth-card input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ink);
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.auth-card button {
+  margin-top: 12px;
+  width: 100%;
+  appearance: none;
+  border: 0;
+  border-radius: 9px;
+  padding: 10px 14px;
+  font-weight: 800;
+  color: #1d1a0a;
+  background: linear-gradient(135deg, #ffcb3d, #ff994a);
+  cursor: pointer;
+}
+
+.auth-error {
+  min-height: 1.2em;
+  margin-top: 10px;
+  color: #ff9fac;
+  font-weight: 700;
+}
+
 .top-bar h1 {
   margin: 0;
   font-size: clamp(1.4rem, 2.8vw, 2rem);

@@ -21,6 +21,13 @@ const rightBtn = document.getElementById("rightBtn");
 const jumpBtn = document.getElementById("jumpBtn");
 const modeBtn = document.getElementById("modeBtn");
 const shootBtn = document.getElementById("shootBtn");
+const authGate = document.getElementById("authGate");
+const authName = document.getElementById("authName");
+const authPass = document.getElementById("authPass");
+const authBtn = document.getElementById("authBtn");
+const authError = document.getElementById("authError");
+
+let authed = false;
 
 const TILE = 48;
 const ROWS = 13;
@@ -251,6 +258,20 @@ function announce(text, duration = 1200) {
   announceTimer = setTimeout(() => {
     announceEl.classList.remove("visible");
   }, duration);
+}
+
+function verifyLogin() {
+  const name = authName.value.trim();
+  const pass = authPass.value.trim();
+  if (name === "董宇涵" && pass === "<YOUR_LOGIN_PASSWORD>") {
+    authed = true;
+    authGate.classList.remove("visible");
+    authError.textContent = "";
+    announce("登录成功");
+    return;
+  }
+  authed = false;
+  authError.textContent = "用户名或密码错误";
 }
 
 function resetGame() {
@@ -1034,7 +1055,20 @@ shootBtn.addEventListener("pointerdown", (e) => {
   shoot();
 });
 
+authBtn.addEventListener("click", verifyLogin);
+authPass.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") verifyLogin();
+});
+authName.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") verifyLogin();
+});
+
 startBtn.addEventListener("click", () => {
+  if (!authed) {
+    authGate.classList.add("visible");
+    authError.textContent = "请先登录";
+    return;
+  }
   state.keys = Object.create(null);
   resetGame();
 });

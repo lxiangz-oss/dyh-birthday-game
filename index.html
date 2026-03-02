@@ -7,6 +7,19 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <section id="authGate" class="auth-gate visible">
+      <div class="auth-card">
+        <h2>登录验证</h2>
+        <p>仅限董宇涵进入生日小游戏</p>
+        <label for="authName">用户名</label>
+        <input id="authName" type="text" placeholder="请输入用户名" autocomplete="username" />
+        <label for="authPass">密码</label>
+        <input id="authPass" type="password" placeholder="请输入密码" autocomplete="current-password" />
+        <button id="authBtn" type="button">进入游戏</button>
+        <p id="authError" class="auth-error"></p>
+      </div>
+    </section>
+
     <div class="app">
       <header class="top-bar">
         <h1>杜克周瑜找小乔</h1>
