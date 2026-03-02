@@ -912,13 +912,14 @@ function drawFlag() {
 }
 
 function drawSupporters() {
-  const baseX = game.worldEndX - game.cameraX - 220;
+  const flagX = game.worldEndX - game.cameraX;
+  const baseX = flagX - 300;
   const y = canvas.height - TILE * 3 - 8;
   const people = [
     { name: "Alice", color: "#ff8ac0", offset: 0 },
-    { name: "Ryan", color: "#ffd44d", offset: 54 },
-    { name: "Haobo", color: "#7ad7ff", offset: 108 },
-    { name: "Christine", color: "#d6e4ff", offset: 162 },
+    { name: "Ryan", color: "#ffd44d", offset: 48 },
+    { name: "Haobo", color: "#7ad7ff", offset: 96 },
+    { name: "Christine", color: "#d6e4ff", offset: 144 },
   ];
   for (const p of people) {
     const x = baseX + p.offset;
@@ -931,7 +932,9 @@ function drawSupporters() {
     ctx.fillRect(x + 21, y - 14, 6, 4);
     ctx.fillStyle = "#0f1a2f";
     ctx.font = "bold 10px sans-serif";
-    ctx.fillText(p.name, x - 9, y + 20);
+    ctx.textAlign = "center";
+    ctx.fillText(p.name, x + 14, y + 20);
+    ctx.textAlign = "left";
   }
 }
 
