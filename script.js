@@ -912,13 +912,13 @@ function drawFlag() {
 }
 
 function drawSupporters() {
-  const baseX = game.worldEndX - game.cameraX + 70;
+  const baseX = game.worldEndX - game.cameraX - 220;
   const y = canvas.height - TILE * 3 - 8;
   const people = [
     { name: "Alice", color: "#ff8ac0", offset: 0 },
-    { name: "Ryan", color: "#ffd44d", offset: 46 },
-    { name: "Haobo", color: "#7ad7ff", offset: 92 },
-    { name: "Christine", color: "#d6e4ff", offset: 150 },
+    { name: "Ryan", color: "#ffd44d", offset: 54 },
+    { name: "Haobo", color: "#7ad7ff", offset: 108 },
+    { name: "Christine", color: "#d6e4ff", offset: 162 },
   ];
   for (const p of people) {
     const x = baseX + p.offset;
