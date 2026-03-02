@@ -1,0 +1,220 @@
+:root {
+  --bg-1: #0f2448;
+  --bg-2: #183867;
+  --bg-3: #2f5d91;
+  --ink: #f3f7ff;
+  --accent: #ffd44d;
+  --danger: #ff5d70;
+  --good: #70f0b2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Trebuchet MS", "Segoe UI", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 10% 10%, #2b4c7e 0%, var(--bg-1) 45%, #091226 100%);
+}
+
+.app {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.top-bar h1 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+  letter-spacing: 0.04em;
+}
+
+.top-bar p {
+  margin: 6px 0 14px;
+  opacity: 0.92;
+}
+
+.game-wrap {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 18px 40px rgba(4, 9, 18, 0.45);
+}
+
+#gameCanvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: linear-gradient(var(--bg-2), var(--bg-3));
+}
+
+.hud {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.hud span {
+  background: rgba(11, 17, 29, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 999px;
+  padding: 5px 10px;
+}
+
+.announce {
+  position: absolute;
+  top: 62px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-14px);
+  background: rgba(5, 11, 23, 0.76);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #f7fbff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 800;
+  opacity: 0;
+  transition: opacity 180ms ease, transform 180ms ease;
+  pointer-events: none;
+}
+
+.announce.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(6, 9, 18, 0.38), rgba(6, 9, 18, 0.75));
+  padding: 16px;
+}
+
+.overlay.visible {
+  display: flex;
+}
+
+.panel {
+  width: min(720px, 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(6, 9, 18, 0.84);
+  padding: 18px;
+  line-height: 1.55;
+}
+
+.panel h2 {
+  margin: 0 0 10px;
+  color: var(--accent);
+}
+
+.panel p {
+  margin: 0 0 8px;
+}
+
+.panel ul {
+  margin: 8px 0 14px;
+  padding-left: 18px;
+}
+
+.panel button {
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #ffcb3d, #ff994a);
+  color: #24210e;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.result-card {
+  margin-top: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 10px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.result-card.hidden {
+  display: none;
+}
+
+.result-card img {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  display: block;
+}
+
+.result-card p {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.touch-controls {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+  display: none;
+  justify-content: center;
+  gap: 14px;
+  pointer-events: none;
+}
+
+.touch-controls button {
+  pointer-events: all;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(15, 20, 35, 0.55);
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 800;
+  backdrop-filter: blur(4px);
+}
+
+#jumpBtn {
+  border-color: rgba(255, 212, 77, 0.6);
+}
+
+#leftBtn {
+  border-color: rgba(112, 240, 178, 0.6);
+}
+
+#rightBtn {
+  border-color: rgba(123, 180, 255, 0.6);
+}
+
+#modeBtn {
+  border-color: rgba(248, 130, 96, 0.7);
+}
+
+#shootBtn {
+  border-color: rgba(246, 246, 246, 0.72);
+}
+
+@media (max-width: 900px) {
+  .touch-controls {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>杜克周瑜找小乔 - 董宇涵生日特别版</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top-bar">
+        <h1>杜克周瑜找小乔</h1>
+        <p>董宇涵 2006-03-02 生日特别关卡</p>
+      </header>
+
+      <main class="game-wrap">
+        <canvas id="gameCanvas" width="960" height="540" aria-label="游戏画布"></canvas>
+
+        <section id="overlay" class="overlay visible">
+          <div class="panel">
+            <h2 id="overlayTitle">董宇涵生日挑战赛</h2>
+            <p id="overlayDesc">
+              你是杜克周瑜，正在寻找你的小乔。<br />
+              躲怪、跳坑、收集桃花，冲到终点旗。
+            </p>
+            <ul>
+              <li>操作：`A/D` 或 `←/→` 移动，`空格/W/↑` 跳跃</li>
+              <li>技能：`Q` 切换神魔，`K` 发射（最多5发，10秒充1发）</li>
+              <li>手机：左/右移动 + 跳跃 + 切换 + 发射</li>
+              <li>目标：躲开陷阱和怪物，收集桃花后摸到终点旗</li>
+            </ul>
+            <button id="startBtn" type="button">开始整活</button>
+            <div id="resultCard" class="result-card hidden">
+              <img id="resultImage" alt="结算结果图" />
+              <p id="resultText"></p>
+            </div>
+          </div>
+        </section>
+
+        <div class="hud">
+          <span id="distance">进度: 0%</span>
+          <span id="hearts">桃花值: 0</span>
+          <span id="speed">桃花评级: UIUC入门档</span>
+          <span id="hp">生命: 3</span>
+          <span id="ammo">神形态 | 弹药: 5</span>
+        </div>
+        <div id="announce" class="announce"></div>
+
+        <div class="touch-controls">
+          <button id="leftBtn" type="button">左</button>
+          <button id="rightBtn" type="button">右</button>
+          <button id="jumpBtn" type="button">跳跃</button>
+          <button id="modeBtn" type="button">神魔</button>
+          <button id="shootBtn" type="button">发射</button>
+        </div>
+      </main>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
