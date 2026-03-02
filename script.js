@@ -274,7 +274,16 @@ function verifyLogin() {
   authError.textContent = "用户名或密码错误";
 }
 
+function ensureAuthed() {
+  if (authed) return true;
+  authGate.classList.add("visible");
+  authError.textContent = "请先登录";
+  game.running = false;
+  return false;
+}
+
 function resetGame() {
+  if (!ensureAuthed()) return;
   game.running = true;
   game.finished = false;
   game.cameraX = 0;
@@ -454,14 +463,14 @@ function updateHud() {
 }
 
 function toggleMode() {
-  if (!game.running) return;
+  if (!game.running || !ensureAuthed()) return;
   game.mode = game.mode === "god" ? "demon" : "god";
   addBurst(player.x + player.w / 2, player.y + 8, game.mode === "god" ? "#ffe169" : "#f5f5f5", 12);
   announce(game.mode === "god" ? "神形态: 你现在可以发射网球" : "魔形态: 你现在可以发射白色不明液体");
 }
 
 function shoot() {
-  if (!game.running || game.ammo <= 0 || game.shootCooldown > 0) return;
+  if (!game.running || !ensureAuthed() || game.ammo <= 0 || game.shootCooldown > 0) return;
 
   const isGod = game.mode === "god";
   state.projectiles.push({
@@ -693,6 +702,7 @@ function updateAmmo() {
 }
 
 function updateGame() {
+  if (!ensureAuthed()) return;
   if (game.winCelebrating) {
     updateParticles();
     updateWishes();
@@ -999,12 +1009,19 @@ function gameLoop() {
 }
 
 function doJump() {
-  if (!game.running) return;
+  if (!game.running || !ensureAuthed()) return;
   player.jumpBufferFrames = 8;
   consumeJumpIfPossible();
 }
 
 document.addEventListener("keydown", (e) => {
+  if (!authed) {
+    if (["Space", "ArrowUp", "KeyW", "ArrowLeft", "ArrowRight", "KeyA", "KeyD", "KeyQ", "KeyK"].includes(e.code)) {
+      e.preventDefault();
+      ensureAuthed();
+    }
+    return;
+  }
   state.keys[e.code] = true;
   if (["Space", "ArrowUp", "KeyW", "ArrowLeft", "ArrowRight", "KeyA", "KeyD"].includes(e.code)) {
     e.preventDefault();
@@ -1064,11 +1081,7 @@ authName.addEventListener("keydown", (e) => {
 });
 
 startBtn.addEventListener("click", () => {
-  if (!authed) {
-    authGate.classList.add("visible");
-    authError.textContent = "请先登录";
-    return;
-  }
+  if (!ensureAuthed()) return;
   state.keys = Object.create(null);
   resetGame();
 });
