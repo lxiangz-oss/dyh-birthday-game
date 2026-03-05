@@ -28,6 +28,8 @@ const authBtn = document.getElementById("authBtn");
 const authError = document.getElementById("authError");
 
 let authed = false;
+const AUTH_USERNAME = "<YOUR_LOGIN_USERNAME>";
+const AUTH_PASSWORD = "<YOUR_LOGIN_PASSWORD>";
 
 const TILE = 48;
 const ROWS = 13;
@@ -263,7 +265,7 @@ function announce(text, duration = 1200) {
 function verifyLogin() {
   const name = authName.value.trim();
   const pass = authPass.value.trim();
-  if (name === "董宇涵" && pass === "<YOUR_LOGIN_PASSWORD>") {
+  if (name === AUTH_USERNAME && pass === AUTH_PASSWORD) {
     authed = true;
     authGate.classList.remove("visible");
     authError.textContent = "";

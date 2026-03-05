@@ -10,7 +10,7 @@
 3. 等 10-20 秒，会给你一个公网链接，直接发给董宇涵
 
 ## 3. 玩法
-- 登录：用户名 `董宇涵`，密码 `<YOUR_LOGIN_PASSWORD>`
+- 登录：用户名 `<YOUR_LOGIN_USERNAME>`，密码 `<YOUR_LOGIN_PASSWORD>`
 - `A / D` 或 `← / →`：左右移动
 - `空格 / W / ↑`：跳跃
 - `Q`：神/魔形态切换
@@ -28,4 +28,5 @@
 ## 5. 可快速改文案
 - 主标题：`index.html`
 - 游戏剧情和结算文案：`script.js` 中 `overlayDesc` 附近
+- 登录占位符：`script.js` 中 `AUTH_USERNAME` / `AUTH_PASSWORD`
 - 配色：`style.css` 的 `:root` 变量
